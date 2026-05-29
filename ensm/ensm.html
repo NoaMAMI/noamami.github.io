@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stage ENSM-BPN — Noa MAMI</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="wrap">
+            <nav>
+                <a href="../index.html" class="logo">Noa MAMI</a>
+                <a href="../index.html" class="back">
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M19 12H5M12 5l-7 7 7 7" />
+                    </svg>
+                    Retour
+                </a>
+            </nav>
+
+            <!-- Header -->
+            <div class="stage-header">
+                <div class="stage-meta">
+                    <span class="pill">Mai – Juil. 2025</span>
+                    <span class="pill">Stage · 8 semaines</span>
+                    <span class="pill navy">Militaire</span>
+                </div>
+                <h1>
+                    École Nationale des Sous-Mariniers et des Bâtiments à
+                    Propulsion Nucléaire
+                </h1>
+                <p class="lieu">
+                    ENSM-BPN · Arsenal Malbousquet, Toulon <br />05/2025 →
+                    07/2025
+                </p>
+            </div>
+
+            <hr />
+
+            <!-- Contexte -->
+            <section>
+                <p class="label">Contexte</p>
+                <p>
+                    Le School L@B est la cellule informatique de l'ENSM-BPN
+                    chargée de développer et maintenir les logiciels
+                    pédagogiques de l'école. La Cellule SI travaille notamment
+                    sur un logiciel de suivi pédagogique des élèves, dont la
+                    refonte web (Symfony + Vue.js) est en cours.
+                </p>
+                <p>
+                    Ma mission consistait à créer un outil complémentaire
+                    connecté à l'API du logiciel précédent, pour la
+                    visualisation numérique du
+                    <em>Livret ATO</em> — carnet de formation physique des
+                    atomiciens, actuellement envoyé par courrier entre les
+                    écoles.
+                </p>
+            </section>
+
+            <hr />
+
+            <!-- Stack -->
+            <section>
+                <p class="label">Stack technique</p>
+                <div class="tags">
+                    <span class="tag main">Vue.js + TypeScript</span>
+                    <span class="tag main">Symfony (PHP)</span>
+                    <span class="tag main">MariaDB</span>
+                    <span class="tag main">TailwindCSS</span>
+                    <span class="tag">PrimeVue</span>
+                    <span class="tag">Pinia</span>
+                    <span class="tag">Vite</span>
+                    <span class="tag">HeidiSQL</span>
+                    <span class="tag">API REST</span>
+                </div>
+            </section>
+
+            <hr />
+
+            <!-- Missions -->
+            <section>
+                <p class="label">Missions réalisées</p>
+                <ul class="missions">
+                    <li>
+                        Développement du front-end Vue.js + TypeScript :
+                        composants réutilisables, navigation, affichage PDF via
+                        <code>&lt;iframe&gt;</code>
+                    </li>
+                    <li>
+                        Création d'un système de rendu dynamique basé sur deux
+                        JSON (<em>model</em> + <em>data</em>) via un composant
+                        récursif
+                    </li>
+                    <li>
+                        Développement des routes API Symfony pour la
+                        récupération des utilisateurs filtrés par grade
+                    </li>
+                    <li>
+                        Écriture des requêtes SQL pour la BDD MariaDB et
+                        intégration dans les controllers
+                    </li>
+                    <li>
+                        Intégration de l'API dans le front : récupération des
+                        livrets, des appréciations et des données personnelles
+                        au chargement
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Contraintes -->
+            <section>
+                <p class="label">Contraintes particulières</p>
+                <p>
+                    Le développement s'est fait dans un
+                    <strong>environnement isolé du réseau Internet</strong>,
+                    requis pour l'homologation du logiciel militaire.
+                    L'installation de dépendances npm était impossible en ligne
+                    : chaque bibliothèque devait être téléchargée manuellement
+                    sur un poste connecté, vérifiée via un protocole
+                    d'intégrité, puis transférée vers un dépôt npm local.
+                </p>
+            </section>
+            <hr />
+
+            <!-- Compétences acquises -->
+            <section>
+                <p class="label">Compétences acquises</p>
+                <div class="tags">
+                    <span class="tag">Architecture MVC</span>
+                    <span class="tag">API REST (consommation & création)</span>
+                    <span class="tag">Composants récursifs Vue.js</span>
+                    <span class="tag">Modélisation BDD</span>
+                    <span class="tag"
+                        >Environnement sécurisé / réseau isolé</span
+                    >
+                    <span class="tag">Autonomie technique</span>
+                    <span class="tag">Communication interservices</span>
+                    <span class="tag">Résilience</span>
+                </div>
+            </section>
+
+            <footer>
+                <span>© 2025 Noa MAMI</span>
+                <span>Toulon, France</span>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Stage Suez — Noa MAMI</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="wrap">
+            <nav>
+                <a href="../index.html" class="logo">Noa MAMI</a>
+                <a href="../index.html" class="back">
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M19 12H5M12 5l-7 7 7 7" />
+                    </svg>
+                    Retour
+                </a>
+            </nav>
+
+            <!-- Header -->
+            <div class="stage-header">
+                <div class="stage-meta">
+                    <span class="pill">Oct. – Déc. 2023</span>
+                    <span class="pill">Stage · ~2 mois</span>
+                    <span class="pill green">Suez Eau France</span>
+                    <span class="pill prod">Livré en production</span>
+                </div>
+                <h1>Suez Eau France</h1>
+                <p class="lieu">
+                    Service A2I · Quint-Fonsegrives, Toulouse<br />10/2023 →
+                    12/2023
+                </p>
+            </div>
+
+            <!-- Infos -->
+            <div class="info-cell">
+                <div class="k">Service</div>
+                <div class="v">A2I</div>
+            </div>
+            <div class="info-cell">
+                <div class="k">Tutrice</div>
+                <div class="v">Christelle Caminade</div>
+            </div>
+            <div class="info-cell">
+                <div class="k">Période</div>
+                <div class="v"></div>
+            </div>
+            <div class="info-cell">
+                <div class="k">Formation</div>
+                <div class="v">Terminale Pro SN — LP Renée Bonnet</div>
+            </div>
+
+            <!-- Contexte -->
+            <section>
+                <p class="label">Contexte</p>
+                <p>
+                    Suez Eau France gère un parc d'environ
+                    <strong>160 télétransmetteurs Pérax (P400)</strong>
+                    connectés via un réseau VPN interne ("réseau technique"),
+                    permettant la surveillance d'installations d'eau potable et
+                    d'assainissement. Suite à l'annonce de l'arrêt des réseaux
+                    2G/3G par les opérateurs, Suez devait identifier précisément
+                    les équipements à remplacer pour passer en 4G.
+                </p>
+                <p>
+                    Ma mission principale était d'automatiser la collecte des
+                    <strong>numéros de série et versions logicielles</strong> de
+                    chacun de ces télétransmetteurs, accessibles uniquement via
+                    leur interface web interne — sans aucun accès à Internet
+                    depuis les postes de travail du réseau technique.
+                </p>
+            </section>
+
+            <hr />
+
+            <!-- Projets -->
+            <section>
+                <p class="label">Projets réalisés</p>
+
+                <div class="projet-card">
+                    <div class="titre">
+                        Script Python — Collecte automatisée des
+                        télétransmetteurs
+                        <span class="status">Utilisé en production</span>
+                    </div>
+                    <p>
+                        Web scraping des interfaces HTTP des ~160
+                        télétransmetteurs Pérax P400 via la bibliothèque
+                        <code>requests</code> et des expressions régulières. Le
+                        script extrait le numéro de série et la version
+                        logicielle de chaque appareil, gère les timeouts et
+                        erreurs réseau, et exporte les résultats dans un fichier
+                        CSV — directement réutilisable par les équipes pour
+                        planifier les remplacements matériels.
+                    </p>
+                </div>
+
+                <div class="projet-card">
+                    <div class="titre">
+                        Automatisation Excel — Dédoublonnage TOPKAPI
+                        <span class="status partial">Manuel en fallback</span>
+                    </div>
+                    <p>
+                        Recherche et tri automatique des libellés en doublon
+                        dans le superviseur TOPKAPI (outil de gestion des
+                        télétransmetteurs). Tentative d'automatisation via
+                        formules Excel et VBA ; blocage non résolu, solution
+                        manuelle adoptée en 20 minutes.
+                    </p>
+                </div>
+            </section>
+
+            <hr />
+
+            <!-- Contraintes -->
+            <section>
+                <p class="label">Contraintes techniques</p>
+                <p>
+                    L'ensemble du développement s'est fait sur un poste et une
+                    VM <strong>sans accès à Internet</strong>, connectés
+                    uniquement au réseau technique isolé de Suez. Chaque
+                    bibliothèque Python devait être transférée manuellement
+                    depuis un poste externe, puis installée localement — ce qui
+                    a nécessité de contourner les limitations de
+                    <code>pip</code> et de gérer les dépendances à la main.
+                </p>
+            </section>
+
+            <hr />
+
+            <!-- Stack -->
+            <section>
+                <p class="label">Stack technique</p>
+                <div class="tags">
+                    <span class="tag main">Python</span>
+                    <span class="tag main">Web scraping</span>
+                    <span class="tag main">CSV</span>
+                    <span class="tag">requests</span>
+                    <span class="tag">Expressions régulières</span>
+                    <span class="tag">Excel / VBA</span>
+                    <span class="tag">HTTP</span>
+                    <span class="tag">Réseau VPN</span>
+                </div>
+            </section>
+
+            <hr />
+
+            <!-- Compétences -->
+            <section>
+                <p class="label">Compétences acquises</p>
+                <div class="tags">
+                    <span class="tag main"
+                        >Autonomie en environnement contraint</span
+                    >
+                    <span class="tag main"
+                        >Débogage sans ressources en ligne</span
+                    >
+                    <span class="tag main"
+                        >Livraison d'un outil en production</span
+                    >
+                    <span class="tag">Web scraping Python</span>
+                    <span class="tag">Gestion d'erreurs réseau</span>
+                    <span class="tag">Manipulation de fichiers CSV</span>
+                    <span class="tag">Résolution de problèmes</span>
+                </div>
+            </section>
+
+            <footer>
+                <span>© 2025 Noa MAMI</span>
+                <span>Toulouse, France</span>
+            </footer>
+        </div>
+    </body>
+</html>
