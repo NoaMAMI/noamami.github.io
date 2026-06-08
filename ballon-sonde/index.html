@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Projet Ballon Sonde — Noa MAMI</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="wrap">
+            <nav>
+                <a href="../index.html" class="logo">Noa MAMI</a>
+                <a href="../index.html" class="back">
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M19 12H5M12 5l-7 7 7 7" />
+                    </svg>
+                    Retour
+                </a>
+            </nav>
+
+            <!-- Header -->
+            <div class="stage-header">
+                <div class="stage-meta">
+                    <span class="pill">Fév. – Avr. 2024</span>
+                    <span class="pill">Projet BTS CIEL 1</span>
+                    <span class="pill navy">IoT · LoRaWAN</span>
+                </div>
+                <h1>Ballon Sonde — Station météo connectée</h1>
+                <p class="lieu">
+                    Lycée de l'Espace (Pierre-Paul Riquet) · Projet « Un ballon
+                    pour l'école » en partenariat avec le CNES
+                </p>
+            </div>
+
+            <hr />
+
+            <!-- Contexte -->
+            <section>
+                <p class="label">Contexte</p>
+                <p>
+                    Dans le cadre du projet <em>« Un ballon pour l'école »</em>,
+                    les élèves de STI2D du lycée développent un ballon sonde
+                    capable de relever des données environnementales
+                    (température, pression, humidité, altitude…) dans
+                    l'atmosphère. Notre équipe de 4 techniciens informatiques
+                    (BTS CIEL) était chargée de concevoir et réaliser
+                    <strong>toute la chaîne numérique</strong> : de
+                    l'acquisition des mesures à bord de la nacelle jusqu'à leur
+                    visualisation sur un site web public.
+                </p>
+                <p>
+                    Le projet s'est déroulé en deux prototypes : un premier
+                    démonstrateur lâché à quelques dizaines de mètres dans
+                    l'enceinte du lycée, puis un ballon opérationnel destiné à
+                    monter à ~1000 m d'altitude et à transmettre ses mesures à
+                    distance pendant plusieurs mois.
+                </p>
+            </section>
+
+            <hr />
+
+            <!-- Chaîne IoT -->
+            <section>
+                <p class="label">La chaîne IoT de bout en bout</p>
+                <div class="flow">
+                    <div class="flow-step">
+                        <span class="flow-num">1</span>
+                        <div class="flow-body">
+                            <h4>Acquisition · nacelle</h4>
+                            <p>
+                                Capteurs environnementaux (température,
+                                humidité, pression) lus en I2C par le
+                                microcontrôleur (Nucléo / ESP32). Calcul de
+                                l'altitude à partir de la pression.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">2</span>
+                        <div class="flow-body">
+                            <h4>Transmission · LoRaWAN</h4>
+                            <p>
+                                Données encodées au format CayenneLPP puis
+                                envoyées par le module LoRa-E5 (piloté en
+                                commandes AT via RS232) vers une passerelle
+                                LoRaWAN.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">3</span>
+                        <div class="flow-body">
+                            <h4>Network Server · TTN</h4>
+                            <p>
+                                The Things Network reçoit les trames, les décode
+                                en JSON via le payload formatter et les expose
+                                sur un broker MQTT.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">4</span>
+                        <div class="flow-body">
+                            <h4>Application Server · Node-RED</h4>
+                            <p>
+                                Un Raspberry Pi (Node-RED + broker MQTT
+                                Mosquitto) s'abonne aux données, les traite et
+                                les enregistre, puis les transfère par FTP vers
+                                l'hébergeur.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">5</span>
+                        <div class="flow-body">
+                            <h4>Stockage · Base de données</h4>
+                            <p>
+                                Les mesures sont historisées dans une base MySQL
+                                hébergée sur Alwaysdata (modélisation MCD,
+                                requêtes SQL, intégration Python).
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">6</span>
+                        <div class="flow-body">
+                            <h4>Visualisation · Dashboard web</h4>
+                            <p>
+                                Tableau de bord dynamique (jQuery / jQWidgets)
+                                affichant la température, l'humidité et la
+                                pression sur des jauges mises à jour avec les
+                                dernières données reçues.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr />
+
+            <!-- Stack -->
+            <section>
+                <p class="label">Stack technique</p>
+                <div class="tags">
+                    <span class="tag main">C++ / mbed OS</span>
+                    <span class="tag main">LoRaWAN</span>
+                    <span class="tag main">The Things Network</span>
+                    <span class="tag main">Node-RED</span>
+                    <span class="tag main">MQTT (Mosquitto)</span>
+                    <span class="tag main">MySQL</span>
+                    <span class="tag">ESP32 / Nucléo</span>
+                    <span class="tag">Module LoRa-E5</span>
+                    <span class="tag">Capteurs I2C (HTS221, LPS22HB)</span>
+                    <span class="tag">CayenneLPP</span>
+                    <span class="tag">Commandes AT / RS232</span>
+                    <span class="tag">Raspberry Pi</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">HTML / CSS / Bootstrap</span>
+                    <span class="tag">jQuery / jQWidgets</span>
+                    <span class="tag">Apache · Alwaysdata</span>
+                    <span class="tag">Git</span>
+                </div>
+            </section>
+
+            <hr />
+
+            <!-- Missions -->
+            <section>
+                <p class="label">Travail réalisé</p>
+                <ul class="missions">
+                    <li>
+                        Programmation de l'acquisition des capteurs en
+                        <code>C++ / mbed OS</code> (bus I2C, classes
+                        <code>HTS221Sensor</code> et <code>LPS22HBSensor</code>)
+                        et calcul de l'altitude par la formule barométrique
+                    </li>
+                    <li>
+                        Encodage des mesures au format CayenneLPP pour réduire
+                        la taille des trames sur le réseau LoRaWAN
+                    </li>
+                    <li>
+                        Configuration et pilotage du module LoRa-E5 en commandes
+                        AT (DevEUI, AppKey, connexion OTAA) via la liaison RS232
+                    </li>
+                    <li>
+                        Mise en place de l'application et d'un device sur The
+                        Things Network, configuration du payload formatter
+                    </li>
+                    <li>
+                        Création d'un flux Node-RED (node MQTT + clé API) pour
+                        recevoir, traiter et enregistrer les données
+                    </li>
+                    <li>
+                        Conception de la base de données (MCD, jointures) et
+                        enregistrement des mesures en SQL / Python
+                    </li>
+                    <li>
+                        Réalisation du site web : IHM statique (Bootstrap) puis
+                        tableau de bord dynamique avec jauges jQWidgets
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Cybersécurité -->
+            <section>
+                <p class="label">Prise en compte de la cybersécurité</p>
+                <p>
+                    Le cahier des charges imposait de traiter le risque cyber à
+                    deux niveaux : la <strong>sécurité des données</strong> et
+                    le <strong>contrôle d'accès aux équipements</strong>. Nous
+                    avons réalisé une analyse des risques de l'infrastructure
+                    réseau et appliqué des mesures concrètes, comme l'usage de
+                    clés API en <em>lecture seule</em> pour la récupération des
+                    données depuis TTN, afin de limiter la surface d'attaque.
+                </p>
+            </section>
+
+            <hr />
+
+            <!-- Compétences acquises -->
+            <section>
+                <p class="label">Compétences acquises</p>
+                <div class="tags">
+                    <span class="tag">Architecture IoT complète</span>
+                    <span class="tag">Réseaux LPWAN / LoRaWAN</span>
+                    <span class="tag">Protocole MQTT</span>
+                    <span class="tag">Programmation embarquée C++</span>
+                    <span class="tag">Modélisation & requêtes BDD</span>
+                    <span class="tag">Développement web dynamique</span>
+                    <span class="tag">Gestion de projet (Gantt)</span>
+                    <span class="tag">Travail en équipe</span>
+                    <span class="tag">Cybersécurité</span>
+                </div>
+            </section>
+
+            <footer>
+                <span>Noa MAMI</span>
+                <span>Toulouse, France</span>
+            </footer>
+        </div>
+    </body>
+</html>
