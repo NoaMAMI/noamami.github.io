@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Projet VOD / VoIP — Noa MAMI</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+
+    <body>
+        <div class="wrap">
+            <nav>
+                <a href="../index.html" class="logo">Noa MAMI</a>
+                <a href="../index.html" class="back">
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M19 12H5M12 5l-7 7 7 7" />
+                    </svg>
+                    Retour
+                </a>
+            </nav>
+
+            <!-- Header -->
+            <div class="stage-header">
+                <div class="stage-meta">
+                    <span class="pill">Projet BTS CIEL 1</span>
+                    <span class="pill">Individuel</span>
+                    <span class="pill navy">VoIP · VOD · Linux</span>
+                </div>
+                <h1>Résidence hôtelière — VoIP & VOD sur IP</h1>
+                <p class="lieu">
+                    Lycée de l'Espace (Pierre-Paul Riquet) · Projet VM / OS Unix
+                </p>
+            </div>
+
+            <hr />
+
+            <!-- Contexte -->
+            <section>
+                <p class="label">Contexte</p>
+                <p>
+                    Un exploitant de résidence hôtelière souhaite moderniser son
+                    installation en déployant trois services : une
+                    <strong>téléphonie sur IP</strong> pour les chambres et les
+                    services internes, un système de
+                    <strong>vidéo à la demande</strong> accessible depuis un
+                    téléviseur Android dans chaque chambre, et un
+                    <strong>accès internet WiFi</strong> pour les clients.
+                </p>
+                <p>
+                    J'ai conçu et déployé l'intégralité de cette infrastructure
+                    en solo, sur machines virtuelles VirtualBox, en partant de
+                    zéro : installation des OS Linux, configuration des
+                    services, câblage réseau virtuel, tests de bout en bout.
+                </p>
+            </section>
+
+            <hr />
+
+            <!-- Architecture -->
+            <section>
+                <p class="label">Architecture déployée</p>
+                <div class="flow">
+                    <div class="flow-step">
+                        <span class="flow-num">1</span>
+                        <div class="flow-body">
+                            <h4>Infrastructure réseau</h4>
+                            <p>
+                                Conception du plan d'adressage IP, calcul des
+                                sous-réseaux, déploiement d'un switch et
+                                configuration des interfaces réseau des VMs
+                                (mode bridge vers le réseau physique de la
+                                salle).
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">2</span>
+                        <div class="flow-body">
+                            <h4>Serveur VoIP — Asterisk / Trixbox</h4>
+                            <p>
+                                VM Linux (Trixbox, image ISO) hébergeant un IPBX
+                                Asterisk. Création des extensions SIP : poste
+                                201 (Réception) et poste 202 (Chambre 1).
+                                Validation des appels entre softphones.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">3</span>
+                        <div class="flow-body">
+                            <h4>Clients SIP</h4>
+                            <p>
+                                microSIP sur PC Windows (poste Réception) et
+                                Linphone sur smartphone Android (poste Chambre).
+                                Enregistrement SIP, test d'appel bidirectionnel
+                                et messagerie vocale sécurisée (bonus).
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">4</span>
+                        <div class="flow-body">
+                            <h4>Serveur VOD — VLC streaming</h4>
+                            <p>
+                                VM Debian 8 installée et configurée
+                                manuellement. Service VLC configuré avec deux
+                                flux de streaming (<code>StarWars</code>,
+                                <code>FastAndFurious</code>) définis dans une
+                                liste VLM. Transfert des fichiers vidéo par SCP.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <span class="flow-num">5</span>
+                        <div class="flow-body">
+                            <h4>Clients VOD</h4>
+                            <p>
+                                Configuration du client VLC sur les postes
+                                clients (PC Windows / Raspberry Pi Android TV)
+                                pour se connecter aux flux et visionner les
+                                contenus à la demande depuis le téléviseur de la
+                                chambre.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr />
+
+            <!-- Stack -->
+            <section>
+                <p class="label">Stack technique</p>
+                <div class="tags">
+                    <span class="tag main">Linux Debian</span>
+                    <span class="tag main">Asterisk / Trixbox</span>
+                    <span class="tag main">VLC (streaming VLM)</span>
+                    <span class="tag main">Protocole SIP / RTP</span>
+                    <span class="tag main">VirtualBox</span>
+                    <span class="tag main">TCP/IP · sous-réseaux</span>
+                    <span class="tag">microSIP</span>
+                    <span class="tag">Linphone</span>
+                    <span class="tag">SSH · SCP</span>
+                    <span class="tag">sudo · droits Unix</span>
+                    <span class="tag">APT (gestionnaire de paquets)</span>
+                    <span class="tag">Raspberry Pi · Android TV</span>
+                    <span class="tag">WiFi · routeur</span>
+                </div>
+            </section>
+
+            <hr />
+
+            <!-- Missions -->
+            <section>
+                <p class="label">Travail réalisé</p>
+                <ul class="missions">
+                    <li>
+                        Installation et configuration de deux VMs Linux sous
+                        VirtualBox (Debian 8 pour VOD, Trixbox pour VoIP) en
+                        partant de l'image ISO
+                    </li>
+                    <li>
+                        Administration système Unix : gestion des comptes
+                        root/user, configuration de <code>sudo</code>, droits
+                        sur les fichiers, gestion des paquets avec APT
+                    </li>
+                    <li>
+                        Configuration réseau des VMs en mode bridge, plan
+                        d'adressage IP et calcul des sous-réseaux de la
+                        résidence
+                    </li>
+                    <li>
+                        Déploiement du serveur VoIP Asterisk (Trixbox) :
+                        création des extensions SIP, configuration des comptes
+                        Réception (201) et Chambre (202)
+                    </li>
+                    <li>
+                        Installation et enregistrement des softphones (microSIP
+                        sur PC, Linphone sur smartphone) ; validation des appels
+                        et messagerie vocale sécurisée
+                    </li>
+                    <li>
+                        Transfert des fichiers vidéo par SCP, configuration du
+                        service de streaming VLC avec liste VLM multi-flux
+                    </li>
+                    <li>
+                        Tests de recette de l'installation (validation bout en
+                        bout avec le client)
+                    </li>
+                </ul>
+            </section>
+
+            <hr />
+
+            <!-- Compétences acquises -->
+            <section>
+                <p class="label">Compétences acquises</p>
+                <div class="tags">
+                    <span class="tag">Administration Linux</span>
+                    <span class="tag">Virtualisation (VirtualBox)</span>
+                    <span class="tag">ToIP / protocole SIP</span>
+                    <span class="tag">Streaming vidéo (VOD)</span>
+                    <span class="tag">Conception réseau IP</span>
+                    <span class="tag">SSH / SCP</span>
+                    <span class="tag">Autonomie & déploiement solo</span>
+                    <span class="tag">Recette d'installation</span>
+                </div>
+            </section>
+
+            <footer>
+                <span>Noa MAMI</span>
+                <span>Toulouse, France</span>
+            </footer>
+        </div>
+    </body>
+</html>
